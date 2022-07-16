@@ -74,9 +74,9 @@ public class PaymentController {
     Map<String, String> addPayments(@Valid @RequestBody List<Payment> payments) {
         for (Payment payment : payments) {
             if (paymentRepository.findByEmployeeAndPeriod(payment.getEmployee(), payment.getPeriod()).size() > 0)
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error!");
-            if (payment.getSalary().compareTo(BigDecimal.valueOf(0)) < 1)
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error!");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Payment already exists!");
+            if (payment.getSalary().compareTo(BigDecimal.valueOf(0)) < 0)
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Salary cannot be less than 0!");
             paymentRepository.save(payment);
         }
         return Map.of("status", "Added successfully!");
