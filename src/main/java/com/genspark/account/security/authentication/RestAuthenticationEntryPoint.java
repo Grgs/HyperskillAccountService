@@ -1,9 +1,9 @@
-package com.genspark.account.security;
+package com.genspark.account.security.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.genspark.account.logging.AccountLogger;
-import com.genspark.account.user.UserAuthStatus;
-import com.genspark.account.user.UserAuthStatusRepository;
+import com.genspark.account.userAuthStatus.UserAuthStatus;
+import com.genspark.account.userAuthStatus.UserAuthStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

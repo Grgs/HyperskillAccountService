@@ -1,4 +1,4 @@
-package com.genspark.account.security;
+package com.genspark.account.security.authentication;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

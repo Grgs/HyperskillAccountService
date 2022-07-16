@@ -1,9 +1,10 @@
-package com.genspark.account.security;
+package com.genspark.account.security.authentication;
 
 import com.genspark.account.logging.AccountLogger;
 import com.genspark.account.logging.LOG_ACTIONS;
-import com.genspark.account.user.UserAuthStatus;
-import com.genspark.account.user.UserAuthStatusRepository;
+import com.genspark.account.user.ROLE;
+import com.genspark.account.userAuthStatus.UserAuthStatus;
+import com.genspark.account.userAuthStatus.UserAuthStatusRepository;
 import com.genspark.account.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;

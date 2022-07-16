@@ -1,5 +1,6 @@
 package com.genspark.account.security;
 
+import com.genspark.account.user.ROLE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

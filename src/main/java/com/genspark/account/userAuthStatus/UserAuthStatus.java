@@ -1,4 +1,4 @@
-package com.genspark.account.user;
+package com.genspark.account.userAuthStatus;
 
 import javax.persistence.*;
 

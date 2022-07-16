@@ -1,4 +1,4 @@
-package com.genspark.account.security;
+package com.genspark.account.userAuthStatus;
 
 public class UserLockInput {
     private String user;

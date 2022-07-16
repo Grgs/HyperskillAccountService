@@ -1,4 +1,4 @@
-package com.genspark.account.security;
+package com.genspark.account.user;
 
 public class UserRoleInput {
     private String user;

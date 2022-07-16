@@ -1,8 +1,8 @@
 package com.genspark.account.security;
 
 import com.genspark.account.user.User;
-import com.genspark.account.user.UserAuthStatus;
-import com.genspark.account.user.UserAuthStatusRepository;
+import com.genspark.account.userAuthStatus.UserAuthStatus;
+import com.genspark.account.userAuthStatus.UserAuthStatusRepository;
 import com.genspark.account.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.genspark.account.security;
+package com.genspark.account.security.authentication;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

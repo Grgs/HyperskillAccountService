@@ -1,4 +1,4 @@
-package com.genspark.account.user;
+package com.genspark.account.userAuthStatus;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
