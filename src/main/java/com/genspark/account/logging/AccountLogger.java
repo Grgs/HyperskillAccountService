@@ -13,7 +13,6 @@ import java.sql.Timestamp;
 public class AccountLogger {
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountLogger.class);
     private final AccountLogRepository accountLogRepository;
-//    private AccountLog accountLog = new AccountLog();
 
     private String action;
     private String subject;
@@ -23,7 +22,6 @@ public class AccountLogger {
     @Autowired
     public AccountLogger(AccountLogRepository repository) {
         this.accountLogRepository = repository;
-//        this.accountLog = accountLog;
     }
 
     private void dbSave() {

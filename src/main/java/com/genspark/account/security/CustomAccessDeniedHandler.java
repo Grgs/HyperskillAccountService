@@ -25,23 +25,5 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest request, HttpServletResponse response,
                        AccessDeniedException accessDeniedException) throws IOException, ServletException {
         response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied!");
-//        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Access Denied!");
-//        PrintWriter responseWriter = response.getWriter();
-//        Map<String, Object> responseMap = new HashMap<>();
-//        response.setContentType("application/json");
-//        response.setCharacterEncoding("UTF-8");
-//        responseMap.put("timestamp", new Timestamp(System.currentTimeMillis()).toString());
-//        responseMap.put("status", 403);
-//        responseMap.put("error", HttpStatus.FORBIDDEN.toString());
-//        responseMap.put("message", "Access Denied!");
-//        responseMap.put("path", request.getServletPath());
-//        response.setStatus(403);
-//        responseWriter.print(new ObjectMapper().writeValueAsString(responseMap));
-//        response.flushBuffer();
-
-
-//        logger.log(LOG_ACTIONS.ACCESS_DENIED, request.getRemoteUser(), request.getRequestURI(),
-//                request.getRequestURI());
-
     }
 }

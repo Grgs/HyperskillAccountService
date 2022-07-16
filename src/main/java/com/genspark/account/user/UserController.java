@@ -55,7 +55,6 @@ public class UserController {
         }
     }
 
-
     @PostMapping("/api/auth/changepass")
     Map<String, String> changePassword(@Valid @RequestBody NewPassword newPassword,
                                        @AuthenticationPrincipal UserDetails userDetails) {
@@ -81,7 +80,7 @@ public class UserController {
     private void validatePassword(String password) {
         if (password.length() < 12)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password length must be 12 chars minimum!");
-        if (BadPasswords.inList(password))
+        if (BadPasswords.isBad(password))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The password is in the hacker's database!");
     }
 
@@ -182,9 +181,6 @@ public class UserController {
             logger.log(LOG_ACTIONS.UNLOCK_USER, userDetails.getUsername(), "Unlock user " + userStatus.getEmail(),
                     "/api/admin/user/access");
         }
-//        logger.log(userStatus.isLocked() ? LOG_ACTIONS.LOCK_USER : LOG_ACTIONS.UNLOCK_USER, userStatus.getEmail(),
-//                String.format("%s%s user %s", operation.charAt(0), operation.substring(1).toLowerCase(),
-//                        userStatus.getEmail()), "/api/admin/user/access");
         return Map.of("status", String.format("User %s %s!", userStatus.getEmail(),
                 userStatus.isLocked() ? "locked" : "unlocked"));
     }

@@ -9,7 +9,7 @@ public class BadPasswords {
             "PasswordForMay", "PasswordForJune", "PasswordForJuly", "PasswordForAugust",
             "PasswordForSeptember", "PasswordForOctober", "PasswordForNovember", "PasswordForDecember"));
 
-    public static boolean inList(String password) {
+    public static boolean isBad(String password) {
         return passwords.contains(password);
     }
 }

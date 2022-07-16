@@ -35,8 +35,6 @@ public class AuthenticationListeners {
         UserAuthStatus userStatus = this.getUserAuthStatus(email);
         if (userStatus != null) {
             userStatus.setLoginAttempts(userStatus.getLoginAttempts() + 1);
-//            accountLogger.consoleLog(LOG_ACTIONS.LOGIN_FAILED, email, String.valueOf(userStatus.getLoginAttempts()),
-//                    "");
             if (userStatus.getLoginAttempts() > 4 && !userStatus.isLocked()) {
                 accountLogger.log(LOG_ACTIONS.BRUTE_FORCE, userStatus.getEmail(), request.getRequestURI(),
                         request.getRequestURI());

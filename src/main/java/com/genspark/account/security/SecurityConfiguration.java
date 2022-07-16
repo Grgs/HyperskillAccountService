@@ -49,12 +49,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().httpBasic().authenticationEntryPoint(authenticationEntryPoint)
                 .and().exceptionHandling()
                 .accessDeniedHandler(accessDeniedHandler)
-//                .accessDeniedHandler(accessDeniedHandler)
-//                .and().httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint)
-//                .and().httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint)
-//                .authenticationEntryPoint(restAuthenticationEntryPoint)
-//                .accessDeniedHandler(accessDeniedHandler)
-//                .and().exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and().csrf().disable().headers().frameOptions().disable()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

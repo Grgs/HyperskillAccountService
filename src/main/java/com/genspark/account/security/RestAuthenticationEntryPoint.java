@@ -1,9 +1,9 @@
 package com.genspark.account.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.genspark.account.logging.AccountLogger;
 import com.genspark.account.user.UserAuthStatus;
 import com.genspark.account.user.UserAuthStatusRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -44,7 +44,6 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
-//        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access Denied!");
 
         String email;
         try {
@@ -80,8 +79,6 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
             responseMap.put("message", message);
             responseMap.put("path", request.getServletPath());
             response.getWriter().write(mapper.writeValueAsString(responseMap));
-//            accountLogger.consoleLog(LOG_ACTIONS.LOGIN_FAILED, "map response", response.toString(),
-//                    request.getServletPath());
         } catch (Exception e1) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access Denied!");
         }
