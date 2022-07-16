@@ -4,8 +4,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-/.idea/jpa-buddy.xml
-!/.idea/uiDesigner.xml
+.idea/jpa-buddy.xml
+.idea/uiDesigner.xml
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
