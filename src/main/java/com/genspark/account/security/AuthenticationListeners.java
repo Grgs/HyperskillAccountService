@@ -68,7 +68,6 @@ public class AuthenticationListeners {
         } catch (Exception e) {
             email = request.getRemoteUser();
         }
-//        accountLogger.log(LOG_ACTIONS.ACCESS_DENIED, email, request.getRequestURI(), request.getRequestURI());
         String path = request.getServletPath();
         if (path == null)
             path = request.getRequestURI();

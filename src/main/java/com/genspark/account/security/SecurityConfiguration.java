@@ -32,7 +32,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-//                .anyRequest().permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/auth/signup").permitAll()
                 .mvcMatchers(HttpMethod.POST, "/api/auth/changepass").hasAnyRole(
                         ROLE.USER.toString(), ROLE.ACCOUNTANT.toString(), ROLE.ADMINISTRATOR.toString())
