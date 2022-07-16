@@ -37,8 +37,7 @@ public class PaymentController {
             PaymentOutput responsePayment = new PaymentOutput();
             responsePayment.setName(user.getName());
             responsePayment.setLastname(user.getLastname());
-            responsePayment.setPeriod(payment.getPeriod().
-                    format(DateTimeFormatter.ofPattern("MMMM-yyyy")));
+            responsePayment.setPeriod(payment.getPeriod().format(DateTimeFormatter.ofPattern("MMMM-yyyy")));
             responsePayment.setSalary(payment.getFormattedSalary());
             response.add(0, responsePayment);
         }
@@ -51,7 +50,7 @@ public class PaymentController {
         try {
             ymPeriod = YearMonth.parse(period, DateTimeFormatter.ofPattern("[MM-yyyy][MMMM-yyyy]"));
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid period format!");
         }
         List<Payment> payments = paymentRepository.findByEmployeeIgnoreCaseAndPeriod(
                 userDetails.getUsername(), ymPeriod);
@@ -73,10 +72,13 @@ public class PaymentController {
     @PostMapping("/api/acct/payments")
     Map<String, String> addPayments(@Valid @RequestBody List<Payment> payments) {
         for (Payment payment : payments) {
-            if (paymentRepository.findByEmployeeAndPeriod(payment.getEmployee(), payment.getPeriod()).size() > 0)
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Payment already exists!");
+            if (paymentRepository.findByEmployeeIgnoreCaseAndPeriod(payment.getEmployee(),
+                    payment.getPeriod()).size() > 0)
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                        String.format("Payment already exists: %s %s", payment.getEmployee(), payment.getPeriod()));
             if (payment.getSalary().compareTo(BigDecimal.valueOf(0)) < 0)
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Salary cannot be less than 0!");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                        "Salary cannot be less than 0: " + payment.getSalary());
             paymentRepository.save(payment);
         }
         return Map.of("status", "Added successfully!");
@@ -86,7 +88,7 @@ public class PaymentController {
     @PutMapping("/api/acct/payments")
     Map<String, String> changePayments(@RequestBody Payment payment) {
         List<Payment> storedPayments = paymentRepository.
-                findByEmployeeAndPeriod(payment.getEmployee(), payment.getPeriod());
+                findByEmployeeIgnoreCaseAndPeriod(payment.getEmployee(), payment.getPeriod());
         if (storedPayments.size() < 1)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Payment was not found!");
         Payment storedPayment = storedPayments.get(0);
